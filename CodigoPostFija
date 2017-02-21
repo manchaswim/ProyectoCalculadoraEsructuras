@@ -1,0 +1,85 @@
+
+package proyectocalculadora;
+
+import java.util.ArrayList;
+import PilaA.*;
+import java.util.Scanner;
+
+public class ProyectoCalculadora {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String expresion;
+        expresion = in.next();
+        System.out.println(expresion);
+        char inFijo[]=new char[expresion.length()];
+        for(int i =0;i<expresion.length();i++){
+            inFijo[i]=expresion.charAt(i);
+            System.out.println(inFijo[i]);
+        }
+        ArrayList postFijo = new ArrayList();
+        postFijo=postFijo(inFijo);
+        int j=0;
+        for(int i=0;i<postFijo.size();i++){
+            System.out.print(postFijo.get(i));
+        }
+    }
+    
+    public static int getPrioridad(char operador){
+        int jerarquia;
+        switch(operador){
+            case '*':
+                jerarquia=1;
+                break;
+            case '/':
+                jerarquia=1;
+                break;
+            case '+':
+                jerarquia=0;
+                break;
+            case '-':
+                jerarquia=0;
+                break;
+            default:
+                jerarquia=0;
+                break;
+        }
+        return jerarquia;
+    }
+    
+    public static ArrayList postFijo(char [] inFija){
+        int i = 0;
+        ArrayList postFija = new ArrayList();
+        PilaA operadores = new PilaA(); 
+        while(i<inFija.length){
+            System.out.println(i);
+            if(inFija[i]=='('){
+                operadores.push(inFija[i]);
+            }            
+            else if((inFija[i]=='*')||(inFija[i]=='/')||(inFija[i]=='+')||(inFija[i]=='-')){
+                while(!operadores.isEmpty()&&(getPrioridad(inFija[i])<=getPrioridad((char)operadores.peek()))&&((char)operadores.peek()!='(')){
+                    postFija.add(operadores.pop());
+                }
+                operadores.push(inFija[i]);
+            }
+            else if(inFija[i]==')'){
+                while((char)operadores.peek()!='('){
+                    postFija.add(operadores.pop());
+                }
+                operadores.pop();
+            }
+            else if(Character.getNumericValue(inFija[i])==(int)Character.getNumericValue(inFija[i])){
+                postFija.add(inFija[i]);
+            }
+            i++;
+        }
+        
+        
+        while(!operadores.isEmpty()){
+            postFija.add(operadores.pop());
+        }
+        
+        return postFija;
+    }
+    
+}
