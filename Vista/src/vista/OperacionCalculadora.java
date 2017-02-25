@@ -8,7 +8,8 @@ import java.util.ArrayList;
  *
  * @author manchaswim
  */
-public class OperacionCalculadora {
+public abstract class OperacionCalculadora {
+    
     public static boolean revisaParentesis(String cadena){
         PilaA <Character> p= new PilaA();
         int i,n;
@@ -18,20 +19,17 @@ public class OperacionCalculadora {
         n=cadena.length();
         
         while(i<n && bandera){
-            if(cadena.charAt(i)=='(')
+            if(cadena.charAt(i)=='('){
                 p.push(cadena.charAt(i));
-            else
-                
-                if(cadena.charAt(i)==')'){
-                    
-                    
-                    x=p.pop(); //borra el elemento de la pila
-                    if(x==null) //significa que no hubo pareja del parentesis derecho y que no hay buen orden
-                        bandera=false;
-                } 
+            }
+            else if(cadena.charAt(i)==')'){
+                x=p.pop(); 
+                if(x==null){ 
+                    bandera=false;
+                }
+            } 
             i++;
         }
-        //regresa un true SI Y SOLO SI ESTAS DOS CONDICIONES SON TRUE
         return p.isEmpty() && bandera;
     }
     
@@ -40,6 +38,7 @@ public class OperacionCalculadora {
         boolean resp=false;
         int i,n;
         String cadena=Util.eliminarEspacios(cad);
+        System.out.println(cadena);
         n=cadena.length();
         i=0;
         while(i<n-1 && !resp){
@@ -54,26 +53,6 @@ public class OperacionCalculadora {
         return resp;
     }
     
-    public static ArrayList addInversoAditivo(String cadena){
-        int i=0;
-        ArrayList inFijaIA = new ArrayList();
-        while(i<cadena.length()){
-            if(cadena.charAt(i)=='-'){
-                inFijaIA.add('+');
-                inFijaIA.add('(');
-                inFijaIA.add(' ');
-                inFijaIA.add('-');
-                inFijaIA.add('1');
-                inFijaIA.add(' ');
-                inFijaIA.add(')');
-                inFijaIA.add('*');
-            }
-            else{
-                inFijaIA.add(cadena.charAt(i));
-            }
-        }
-        return inFijaIA;
-    }
    
     public static ArrayList convertirAPostFijo(char [] inFija){
         int i = 0;
@@ -89,7 +68,6 @@ public class OperacionCalculadora {
                     postFija.add(operadores.pop());
                 }
                 operadores.push(inFija[i]);
-   
             }
             else if(inFija[i]==')'){
                 while((char)operadores.peek()!='('){
@@ -100,11 +78,11 @@ public class OperacionCalculadora {
             else if(inFija[i]==' '){
                 postFija.add(inFija[i]);
                 i++;
-                while(inFija[i]!=' '){
+                while(i<inFija.length&&inFija[i]!=' '){
                     postFija.add(inFija[i]);
                     i++;
                 }
-                postFija.add(inFija[i]);
+                postFija.add(' ');
             }
             i++;
         }
@@ -117,7 +95,7 @@ public class OperacionCalculadora {
         return postFija;
     }
     
-    public String evaluaPostFija(ArrayList postFija){
+    public static String evaluarPostFija(ArrayList postFija){
         String numero="";
         double respuesta=0,div1, div2;
         PilaA operandos = new PilaA();
@@ -136,10 +114,9 @@ public class OperacionCalculadora {
                         case '/':
                             div2 = (double)operandos.pop();
                             div1 = (double)operandos.pop();
-                            try{
                                 respuesta = div1/div2;
                                 operandos.push(respuesta);
-                            }catch(Exception e){
+                            if(div2==0){
                                 return "Logic error";
                             }
                             break;

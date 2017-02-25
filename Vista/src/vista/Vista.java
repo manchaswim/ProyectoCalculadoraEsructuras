@@ -444,19 +444,36 @@ public class Vista extends javax.swing.JFrame {
  
     private void jbigualActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-        String expresion=jbigual.getText();
-        jTextField1.setText("");
-        char inFijo[]=new char[expresion.length()];
-        for(int i =0;i<expresion.length();i++){
-            inFijo[i]=expresion.charAt(i);
-            //System.out.println(inFijo[i]);
-        }
+        String expresion=jTextField1.getText();
+        
         ArrayList postFijo = new ArrayList();
-        postFijo=OperacionCalculadora.convertirAPostFijo(inFijo);
-        int j=0;
-        for(int i=0;i<postFijo.size();i++){
-            jTextField1.setText(jTextField1.getText()+postFijo.get(i));
+        
+        
+        if(OperacionCalculadora.revisaParentesis(expresion)&&!OperacionCalculadora.operadoresRepetidos(expresion)){
+            expresion=Util.addInversoAditivo(expresion);
+            System.out.println(expresion);
+            char inFijo[]=new char[expresion.length()];
+            for(int i =0;i<expresion.length();i++){
+                inFijo[i]=expresion.charAt(i);
+                System.out.print(inFijo[i]);
+            }
+            System.out.println("");
+            postFijo = OperacionCalculadora.convertirAPostFijo(inFijo);
+            for(int i=0;i<postFijo.size();i++){
+                System.out.print(postFijo.get(i));
+            }
+            jTextField1.setText("");
+            jTextField1.setText(OperacionCalculadora.evaluarPostFija(postFijo));
         }
+        else{
+            jTextField1.setText("Syntax error");
+        }
+        //postFijo=OperacionCalculadora.convertirAPostFijo(inFijo);
+        //int j=0;
+        
+        /*for(int i=0;i<postFijo.size();i++){
+            jTextField1.setText(jTextField1.getText()+postFijo.get(i));
+        }*/
         bandera=false;
     }                                      
  

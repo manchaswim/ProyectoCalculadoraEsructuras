@@ -1,7 +1,9 @@
 
 package vista;
 
-public class Util {
+import java.util.ArrayList;
+
+public abstract class Util {
     public static boolean esOperador(char a){
         return a=='+'||a=='-'||a=='*'||a=='/';
     }
@@ -12,7 +14,7 @@ public class Util {
             if(cadena.charAt(i)==' '){
                 i++;
             }
-            operacion=operacion+cadena.length();
+            operacion=operacion+cadena.charAt(i);
         }
         return operacion;
     }
@@ -37,5 +39,20 @@ public class Util {
                 break;
         }
         return jerarquia;
+    }
+     
+    public static String addInversoAditivo(String cadena){
+        
+        StringBuilder expresion = new StringBuilder();
+        ArrayList inFijaIA = new ArrayList();
+        for(int i=0; i<cadena.length();i++){
+            if(cadena.charAt(i)=='-'){
+                expresion.append("+( -1 )*");
+            }
+            else{
+                expresion.append(cadena.charAt(i));
+            }
+        }
+        return expresion.toString();
     }
 }
