@@ -342,21 +342,10 @@ public class Vista extends javax.swing.JFrame {
                 
                 if(cadena.charAt(i)==')'){
                     
-                    //OPCION A
                     
                     x=p.pop(); //borra el elemento de la pila
                     if(x==null) //significa que no hubo pareja del parentesis derecho y que no hay buen orden
                         bandera=false;
-                    
-                    
-                    /*opcion b
-                    try{
-                        p.pop();
-                    }
-                    catch(Exception e){
-                        bandera=false;
-                    }
-                    */
                 } 
             i++;
         }
@@ -400,8 +389,10 @@ public class Vista extends javax.swing.JFrame {
             if(cadena.charAt(i)=='-'){
                 inFijaIA.add('+');
                 inFijaIA.add('(');
+                inFijaIA.add(' ');
                 inFijaIA.add('-');
                 inFijaIA.add('1');
+                inFijaIA.add(' ');
                 inFijaIA.add(')');
                 inFijaIA.add('*');
             }
@@ -434,12 +425,10 @@ public class Vista extends javax.swing.JFrame {
         return jerarquia;
     }
    
-    public static ArrayList postFijo(char [] inFija){
+    public static ArrayList convertirAPostFijo(char [] inFija){
         int i = 0;
         ArrayList postFija = new ArrayList();
-        PilaA operadores = new PilaA();
-        boolean puntoRepetido=false;
-        
+        PilaA operadores = new PilaA();        
         while(i<inFija.length){
             System.out.println(i);
             if(inFija[i]=='('){
@@ -462,18 +451,10 @@ public class Vista extends javax.swing.JFrame {
                 postFija.add(inFija[i]);
                 i++;
                 while(inFija[i]!=' '){
-                    if(inFija[i]=='.'){
-                        if(puntoRepetido){
-                            postFija.clear();
-                            return postFija;
-                        }
-                        puntoRepetido=true;
-                    }
                     postFija.add(inFija[i]);
                     i++;
                 }
                 postFija.add(inFija[i]);
-                puntoRepetido=false;
             }
             i++;
         }
@@ -487,11 +468,49 @@ public class Vista extends javax.swing.JFrame {
     }
     
     public String evaluaPostFija(ArrayList postFija){
-        String resultado;
-        double respuesta;
+        String numero="";
+        double respuesta=0,div1, div2;
+        PilaA operandos = new PilaA();
+        try{
+           for(int i=0;i<postFija.size();i++){
+               if(esOperador((char)postFija.get(i))){
+                   switch((char)postFija.get(i)){
+                        case '+':
+                            respuesta = (double)operandos.pop()+(double)operandos.pop();
+                            operandos.push(respuesta);
+                           break;
+                        case '*':
+                            respuesta = (double)operandos.pop()*(double)operandos.pop();
+                            operandos.push(respuesta);
+                            break;
+                        case '/':
+                            div2 = (double)operandos.pop();
+                            div1 = (double)operandos.pop();
+                            try{
+                                respuesta = div1/div2;
+                                operandos.push(respuesta);
+                            }catch(Exception e){
+                                return "Logic error";
+                            }
+                            break;
+                   }
+               }
+               else if((char)postFija.get(i)==' '){
+                   i++;
+                   while((char)postFija.get(i)!=' '){
+                       numero=numero+(char)postFija.get(i);
+                       i++;
+                   }
+                   operandos.push(Double.parseDouble(numero));
+                   numero="";
+               }
+           } 
+        }
+        catch(Exception e){
+            return "Syntax error"; 
+        }    
             
-            //Esto es lo que falta
-        return resultado;
+        return Double.toString(respuesta);
     }
     
     boolean bandera=false, primera=true, parentesis=true, punto=false, cero=true;
@@ -620,7 +639,7 @@ public class Vista extends javax.swing.JFrame {
             //System.out.println(inFijo[i]);
         }
         ArrayList postFijo = new ArrayList();
-        postFijo=postFijo(inFijo);
+        postFijo=convertirAPostFijo(inFijo);
         int j=0;
         for(int i=0;i<postFijo.size();i++){
             jTextField1.setText(jTextField1.getText()+postFijo.get(i));
