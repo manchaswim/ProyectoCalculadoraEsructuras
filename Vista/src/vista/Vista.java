@@ -326,116 +326,107 @@ public class Vista extends javax.swing.JFrame {
     
     
     
-    boolean bandera=false, primera=true, parentesis=true, punto=false, cero=true;
+    boolean numPunto=false, punto=false;
    
  
     private void jb1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 1");
         else
             jTextField1.setText(jTextField1.getText()+"1");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 2");
         else
             jTextField1.setText(jTextField1.getText()+"2");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb3ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 3");
         else
             jTextField1.setText(jTextField1.getText()+"3");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 0");
         else
             jTextField1.setText(jTextField1.getText()+"0");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb4ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 4");
         else
             jTextField1.setText(jTextField1.getText()+"4");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb5ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 5");
         else
             jTextField1.setText(jTextField1.getText()+"5");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb6ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 6");
         else
             jTextField1.setText(jTextField1.getText()+"6");
-        bandera=true;
+        numPunto=true;
     }                                  
  
     private void jb8ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 8");
         else
             jTextField1.setText(jTextField1.getText()+"8");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb7ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 7");
         else
             jTextField1.setText(jTextField1.getText()+"7");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jb9ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
-        if(!bandera)
+        if(!numPunto)
             jTextField1.setText(jTextField1.getText()+" 9");
         else
             jTextField1.setText(jTextField1.getText()+"9");
-        bandera=true;
-        cero=false;
+        numPunto=true;
     }                                  
  
     private void jbpuntoActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         if(!punto){
-            if(!bandera)
+            if(!numPunto)
               jTextField1.setText(jTextField1.getText()+" .");
             else
               jTextField1.setText(jTextField1.getText()+".");
-            bandera=true;
+            numPunto=true;
             punto=true;
         }
         else
@@ -444,11 +435,11 @@ public class Vista extends javax.swing.JFrame {
  
     private void jbigualActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-        String expresion=jTextField1.getText();
+        //String expresion=jTextField1.getText();
         
         ArrayList postFijo = new ArrayList();
         
-        
+        String expresion = jTextField1.getText();//Escriba su expresión aquí ej."+ 8 *( 6 - 2 )/( 2 + 2 * 4 )+ 3"
         if(OperacionCalculadora.revisaParentesis(expresion)&&!OperacionCalculadora.operadoresRepetidos(expresion)){
             expresion=Util.addInversoAditivo(expresion);
             System.out.println(expresion);
@@ -470,104 +461,73 @@ public class Vista extends javax.swing.JFrame {
         else{
             jTextField1.setText("Syntax error");
         }
-        //postFijo=OperacionCalculadora.convertirAPostFijo(inFijo);
-        //int j=0;
-        
-        /*for(int i=0;i<postFijo.size();i++){
-            jTextField1.setText(jTextField1.getText()+postFijo.get(i));
-        }*/
-        bandera=false;
     }                                      
  
     private void jbmasActionPerformed(java.awt.event.ActionEvent evt) {                                     
         // TODO add your handling code here:
-        if(parentesis && !cero){
-            if(primera){
+        if(numPunto){
                 jTextField1.setText(jTextField1.getText()+" +");
             }
             else
                 jTextField1.setText(jTextField1.getText()+"+");
-            parentesis=false;
-        }
-        else
-            jTextField1.setText(jTextField1.getText()+" +");
-        bandera=false;
+        numPunto=false;
         punto=false;
-        primera=false;
     }                                    
  
     private void jbmenosActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-        if(parentesis){
-            if(primera && !cero){
+        if(numPunto){
                 jTextField1.setText(jTextField1.getText()+" -");
             }
             else
                 jTextField1.setText(jTextField1.getText()+"-");
-            parentesis=false;
-        }
-        else
-            jTextField1.setText(jTextField1.getText()+" -");
-        bandera=false;
+        numPunto=false;
         punto=false;
-        primera=false;
     }                                      
  
     private void jbporActionPerformed(java.awt.event.ActionEvent evt) {                                     
         // TODO add your handling code here:
-        if(parentesis){
-            if(primera){
+        if(numPunto){
                 jTextField1.setText(jTextField1.getText()+" *");
             }
             else
                 jTextField1.setText(jTextField1.getText()+"*");
-            parentesis=false;
-        }
-        else
-            jTextField1.setText(jTextField1.getText()+" *");
-        bandera=false;
+        numPunto=false;
         punto=false;
-        primera=false;
     }                                    
  
    private void jbdivisionActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-        if(parentesis){
-            if(primera){
+        if(numPunto){
                 jTextField1.setText(jTextField1.getText()+" /");
             }
             else
                 jTextField1.setText(jTextField1.getText()+"/");
-            parentesis=false;
-        }
-        else
-            jTextField1.setText(jTextField1.getText()+" /");
-        bandera=false;
+        numPunto=false;
         punto=false;
-        primera=false;
     }                                          
  
     private void jbborrarActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         jTextField1.setText("");
-        bandera=false;
-        parentesis=true;
+        numPunto=false;
         punto=false;
-        primera=true;
-        cero=true;
     }                                       
  
     private void jbpaderechaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        jTextField1.setText(jTextField1.getText()+" )");
-        bandera=false;
-        parentesis=true;
+        if(numPunto){
+                jTextField1.setText(jTextField1.getText()+" )");
+            }
+            else
+                jTextField1.setText(jTextField1.getText()+")");
+        numPunto=false;
     }                                           
  
     private void jbpaizquierdaActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
         jTextField1.setText(jTextField1.getText()+"(");
-        bandera=false;
+        numPunto=false;
     }                                             
  
     /**

@@ -96,10 +96,12 @@ public abstract class OperacionCalculadora {
     public static String evaluarPostFija(ArrayList postFija){
         String numero="";
         double respuesta=0,div1, div2;
+        boolean operacion=false;
         PilaA operandos = new PilaA();
         try{
            for(int i=0;i<postFija.size();i++){
                if(Util.esOperador((char)postFija.get(i))){
+                   operacion = true;
                    switch((char)postFija.get(i)){
                         case '+':
                             respuesta = (double)operandos.pop()+(double)operandos.pop();
@@ -115,7 +117,7 @@ public abstract class OperacionCalculadora {
                                 respuesta = div1/div2;
                                 operandos.push(respuesta);
                             if(div2==0){
-                                return "Logic error";
+                                return "dividing by zero!";
                             }
                             break;
                    }
@@ -126,6 +128,9 @@ public abstract class OperacionCalculadora {
                        numero=numero+(char)postFija.get(i);
                        i++;
                    }
+                   if(!operacion){
+                        respuesta=Double.parseDouble(numero);
+                   } 
                    operandos.push(Double.parseDouble(numero));
                    numero="";
                }
@@ -134,7 +139,6 @@ public abstract class OperacionCalculadora {
         catch(Exception e){
             return "Syntax error"; 
         }    
-            
         return Double.toString(respuesta);
     } 
 }
