@@ -55,4 +55,29 @@ public abstract class Util {
         }
         return expresion.toString();
     }
+    
+    public static String quitaSignosMas(String cad){
+        int n,i;
+        char x;
+        String cadCorregida;
+        cadCorregida="";
+        n=cad.length();
+        i=0;
+        
+        while(i<n){
+            x=cad.charAt(i);
+            //si no es un signo de suma
+            if(x!= '+' )
+                cadCorregida+=x;
+            //si es un simbolo de sum
+            else
+                //en caso de que la expresion empiece con un simbolo de suma
+                if(i!=0)
+                    if(cad.charAt(i-1)!='(' && cad.charAt(i-1)!='*' && cad.charAt(i-1)!='/')
+                        cadCorregida+=x;
+            
+            i++;      
+        }
+        return cadCorregida;
+    }
 }

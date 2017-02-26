@@ -452,6 +452,8 @@ public class Vista extends javax.swing.JFrame {
         if(OperacionCalculadora.revisaParentesis(expresion)&&!OperacionCalculadora.operadoresRepetidos(expresion)){
             expresion=Util.addInversoAditivo(expresion);
             System.out.println(expresion);
+            expresion=Util.quitaSignosMas(expresion);
+            System.out.println(expresion);
             char inFijo[]=new char[expresion.length()];
             for(int i =0;i<expresion.length();i++){
                 inFijo[i]=expresion.charAt(i);

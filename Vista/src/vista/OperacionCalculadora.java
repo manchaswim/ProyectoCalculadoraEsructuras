@@ -42,11 +42,9 @@ public abstract class OperacionCalculadora {
         n=cadena.length();
         i=0;
         while(i<n-1 && !resp){
-            if(resp){
-                
-            }
-            if(Util.esOperador(cadena.charAt(i)) && Util.esOperador(cadena.charAt(i+1)))
+            if(Util.esOperador(cadena.charAt(i)) && Util.esOperador(cadena.charAt(i+1))){
                 resp=true;
+            }
             else
                 i++;
         }
