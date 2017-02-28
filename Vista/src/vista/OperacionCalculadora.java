@@ -5,11 +5,27 @@ import PilaA.PilaA;
 import java.util.ArrayList;
 
 /**
- *
+ *<pre>
+ * Clase OperacionCalculadora
+ * 
+ * Contiene los métodos necesarios para
+ * la funcionalidad de la calculadora
+ * @author Diana Virginia, Cuauhtémoc Gonzalo,Víctor Cuauhtémoc,
+ * Marco Antonio y Susana Muñoz 
+ * </pre>
+ * @see Util
  * @author manchaswim
  */
 public abstract class OperacionCalculadora {
     
+    /**
+     * Revisa que los paréntesis estén ordenados de forma correcta
+     * @param cadena String con la expresión a verificar
+     * @return <ul>
+     * <li> true: los paréntesis están ordenados de forma correcta </li>
+     * <li> false: existe un error en la colocación de los paréntesis </li>
+     * </ul>
+     */
     public static boolean revisaParentesis(String cadena){
         PilaA <Character> p= new PilaA();
         int i,n;
@@ -33,7 +49,18 @@ public abstract class OperacionCalculadora {
         return p.isEmpty() && bandera;
     }
     
-    
+    /**
+     * 
+     * Identifica si existen operadores repetidos
+     * @param cad String que desea ser evaluado.
+     * @see Util#eliminarEspacios(java.lang.String) 
+     * @see Util#esOperador(char) 
+     * 
+     * @return <ul>
+     * <li> true: tiene operadores repetidos. </li>
+     * <li> false: los operadores se encuentran ordenados de forma correcta
+     * </ul>
+     */
     public static boolean operadoresRepetidos(String cad){
         boolean resp=false;
         int i,n;
@@ -51,7 +78,25 @@ public abstract class OperacionCalculadora {
         return resp;
     }
     
-   
+   /**
+    * <pre>
+    * Convierte una expresión in fija a una post fija.
+    * Utiliza una pila y un ciclo while, en el cual se evalúa con condicionales
+    * anidados si el elemento es un paréntesis, operador u operando. En el
+    * caso de paréntesis izquierdo se guarda en la pila; si es un operando
+    * en la expresión hay un ciclo while, mientras la pila esté vacía y la 
+    * prioridad de elementos sea igual o menor a la prioridad del tope de 
+    * la pila, al finalizar ese while se guardan los elementos en la pila; si
+    * el elemento es un paréntesis derecho, sacará todos los elementos de la 
+    * pila hasta encontrar el paréntesis izquierdo. Posteriormente, saca los
+    * elementos de la pila y los agrupa en la expresión post fija.
+    * 
+    * @param inFija Arreglo de caracteres que serán convertidos a 
+    * notación post fija.
+    * @return ArrayList que contiene la expresión post fija
+    * @see Util#getPrioridad(char) 
+    * </pre>
+    */
     public static ArrayList convertirAPostFijo(char [] inFija){
         int i = 0;
         ArrayList postFija = new ArrayList();
@@ -93,6 +138,20 @@ public abstract class OperacionCalculadora {
         return postFija;
     }
     
+    /**
+     * <pre>
+     * Evalúa la expresión post fija y el resultado lo agrega
+     * al campo de texto. Para realizar esto, usa un ciclo for para evaluar cada
+     * elemento de la expresión post fija. Guarda en una pila  los números
+     * encontrados y realiza la operación que encuentra. Es importante
+     * mencionar que siempre utiliza primero el segundo número que saca de 
+     * la pila, lo cual es importante para la división.
+     * @param postFija ArrayList que contiene la expresión postFija
+     * @see convertirAPostFijo(char [] inFija)
+     * @see Util#esOperador(char) 
+     * @return String del resultado de la operación.
+     * </pre>
+     */
     public static String evaluarPostFija(ArrayList postFija){
         String numero="";
         double respuesta=0,div1, div2;

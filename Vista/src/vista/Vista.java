@@ -7,8 +7,11 @@ import java.util.Scanner;
 import PilaA.*;
  
 /**
-* @author Diana Virginia, Cuauhtémoc Gonzalo,Víctor Cuauhtémoc , Marco Antonio y Susana Muñoz 
- *
+ * <pre>
+* @author Diana Virginia, Cuauhtémoc Gonzalo,Víctor Cuauhtémoc ,
+* Marco Antonio y Susana Muñoz 
+ *Contiene la implementación de la interfaz gráfica de la calculadora.
+ * </pre>
  */
 public class Vista extends javax.swing.JFrame {
     /**
@@ -328,7 +331,14 @@ public class Vista extends javax.swing.JFrame {
     
     boolean numPunto=false, punto=false;
    
- 
+    /**
+     * <pre>
+     * Botón del número 1.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -337,7 +347,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"1");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 2.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -346,7 +363,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"2");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 3.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb3ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -355,7 +379,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"3");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 0.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -364,7 +395,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"0");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 4.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb4ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -373,7 +411,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"4");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 5.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb5ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -382,7 +427,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"5");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 6.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb6ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -391,7 +443,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"6");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 8.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb8ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -400,7 +459,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"8");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 7.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb7ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -409,7 +475,14 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"7");
         numPunto=true;
     }                                  
- 
+    /**
+     * <pre>
+     * Botón del número 9.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jb9ActionPerformed(java.awt.event.ActionEvent evt) {                                   
         // TODO add your handling code here:
         if(!numPunto)
@@ -418,7 +491,18 @@ public class Vista extends javax.swing.JFrame {
             jTextField1.setText(jTextField1.getText()+"9");
         numPunto=true;
     }                                  
- 
+     /**
+     * <pre>
+     * Botón del punto.
+     * Genera un espacio si existe algo distinto a un número 
+     * antes que él. Para esto utiliza la bandera numPunto.
+     * Además usa la bandera "punto" para saber si en el mismo
+     * número que se está escribiendo ya existe otro punto. 
+     * En el caso de un punto en el mismo número, no podrás
+     * escribir otro.
+     * @param evt Escucha cuando es presionado un botón
+     * </pre>
+     */
     private void jbpuntoActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         if(!punto){
@@ -432,7 +516,27 @@ public class Vista extends javax.swing.JFrame {
         else
            jTextField1.setText(jTextField1.getText()+""); 
     }                                      
- 
+    /**
+     * <pre>
+     * Botón de igual.
+     * Primeramente, utiliza el metodo quitaSignosMas para solucionar
+     * posibles errores. Luego evalúa si la expresión tiene ordenados 
+     * los paréntesis y si no se encuentran operadores repetidos.
+     * En caso afirmativo continúa y en caso negativo arroja un 
+     * "Syntax error".
+     *  Si continúa, usa un ciclo for para pasar los elementos del String
+     * a un arreglo de caracteres. Con este arreglo, utiliza el método 
+     * convertirAPostFijo y evaluarPostFija para desplegar el resultado 
+     * en el campo de texto.
+     * @param evt Escucha cuando es presionado el botón de igual.
+     * @see OperacionCalculadora#revisaParentesis(java.lang.String) 
+     * @see OperacionCalculadora#operadoresRepetidos(java.lang.String) 
+     * @see Util#addInversoAditivo(java.lang.String) 
+     * @see Util#quitaSignosMas(java.lang.String) 
+     * @see OperacionCalculadora#convertirAPostFijo(char[]) 
+     * @see OperacionCalculadora#evaluarPostFija(java.util.ArrayList) 
+     * </pre>
+     */
     private void jbigualActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         //String expresion=jTextField1.getText();
@@ -440,6 +544,7 @@ public class Vista extends javax.swing.JFrame {
         ArrayList postFijo = new ArrayList();
         
         String expresion = jTextField1.getText();//Escriba su expresión aquí ej."+ 8 *( 6 - 2 )/( 2 + 2 * 4 )+ 3"
+        expresion=Util.quitaSignosMas(expresion);
         if(OperacionCalculadora.revisaParentesis(expresion)&&!OperacionCalculadora.operadoresRepetidos(expresion)){
             expresion=Util.addInversoAditivo(expresion);
             System.out.println(expresion);
@@ -456,13 +561,19 @@ public class Vista extends javax.swing.JFrame {
                 System.out.print(postFijo.get(i));
             }
             jTextField1.setText("");
-            jTextField1.setText(OperacionCalculadora.evaluarPostFija(postFijo));
+            jTextField1.setText(" "+OperacionCalculadora.evaluarPostFija(postFijo));
         }
         else{
             jTextField1.setText("Syntax error");
         }
     }                                      
- 
+    /**
+     * <pre>
+     * Botón de suma.
+     * Si existe un número antes, el método agregará un espacio.
+     * @param evt Escucha cuando es presionado el botón de suma.
+     * </pre>
+     */
     private void jbmasActionPerformed(java.awt.event.ActionEvent evt) {                                     
         // TODO add your handling code here:
         if(numPunto){
@@ -473,7 +584,14 @@ public class Vista extends javax.swing.JFrame {
         numPunto=false;
         punto=false;
     }                                    
- 
+    /**
+     * <pre>
+     * Botón de resta.
+     * Si existe un número o un punto antes, el método agregará un espacio.
+     * @param evt Escucha cuando es presionado el botón de resta
+     * o símbolo negativo.
+     * </pre>
+     */
     private void jbmenosActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         if(numPunto){
@@ -484,7 +602,13 @@ public class Vista extends javax.swing.JFrame {
         numPunto=false;
         punto=false;
     }                                      
- 
+    /**
+     * <pre>
+     * Botón de multiplicación.
+     * Si existe un número antes, el método agregará un espacio.
+     * @param evt Escucha cuando es presionado el botón de multiplicación.
+     * </pre>
+     */
     private void jbporActionPerformed(java.awt.event.ActionEvent evt) {                                     
         // TODO add your handling code here:
         if(numPunto){
@@ -495,7 +619,13 @@ public class Vista extends javax.swing.JFrame {
         numPunto=false;
         punto=false;
     }                                    
- 
+    /**
+     * <pre>
+     * Botón de división.
+     * Si existe un número antes, el método agregará un espacio.
+     * @param evt Escucha cuando es presionado el botón de división.
+     * </pre>
+     */
    private void jbdivisionActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         if(numPunto){
@@ -506,14 +636,24 @@ public class Vista extends javax.swing.JFrame {
         numPunto=false;
         punto=false;
     }                                          
- 
+   /**
+    * Botón de borrar.
+    * Borra la expresión que se encuentra en el campo de texto.
+    * @param evt Escucha cuando se presiona el botón CE
+    */
     private void jbborrarActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         jTextField1.setText("");
         numPunto=false;
         punto=false;
     }                                       
- 
+    /**
+     * <pre>
+     * Botón del paréntesis derecho.
+     * Si existe un número o un punto antes, el método agregará un espacio.
+     * @param evt Escucha cuando es presionado el botón del paréntesis derecho
+     * </pre>
+     */
     private void jbpaderechaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         if(numPunto){
@@ -523,7 +663,13 @@ public class Vista extends javax.swing.JFrame {
                 jTextField1.setText(jTextField1.getText()+")");
         numPunto=false;
     }                                           
- 
+    /**
+     * <pre>
+     * Botón del paréntesis izquierdo.
+     * Si existe un número o un punto antes, el método agregará un espacio.
+     * @param evt Escucha cuando es presionado el botón del paréntesis izquierdo
+     * </pre>
+     */
     private void jbpaizquierdaActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
         jTextField1.setText(jTextField1.getText()+"(");
